@@ -1,10 +1,11 @@
-export type Category= "beach" | "Historical Memory"| "museum"
+export type Category= "Beach" | "Historical Memory"| "Museum"
 
 
 export interface Place{
     id: number
     title: String
     category: Category
+    province: String
     description?: String
     imgUrl?: String
     pageUrl?: String

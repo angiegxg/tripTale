@@ -1,14 +1,12 @@
-/*
-  Warnings:
+-- CreateTable
+CREATE TABLE "User" (
+    "id" SERIAL NOT NULL,
+    "email" TEXT NOT NULL,
+    "name" TEXT,
+    "password" TEXT NOT NULL,
 
-  - You are about to drop the `Post` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropForeignKey
-ALTER TABLE "Post" DROP CONSTRAINT "Post_authorId_fkey";
-
--- DropTable
-DROP TABLE "Post";
+    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
+);
 
 -- CreateTable
 CREATE TABLE "TripTales" (
@@ -26,6 +24,7 @@ CREATE TABLE "Places" (
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
     "category" TEXT NOT NULL,
+    "province" TEXT NOT NULL,
     "description" TEXT,
     "imgUrl" TEXT,
     "pageUrl" TEXT NOT NULL,
@@ -34,6 +33,9 @@ CREATE TABLE "Places" (
 
     CONSTRAINT "Places_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- AddForeignKey
 ALTER TABLE "TripTales" ADD CONSTRAINT "TripTales_placeId_fkey" FOREIGN KEY ("placeId") REFERENCES "Places"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

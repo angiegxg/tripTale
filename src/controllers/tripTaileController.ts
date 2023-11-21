@@ -11,6 +11,8 @@ async function getAllTripTales(_req: Request, res: Response) {
   }
 }
 
+{}
+
 async function getTripTalesByUserId(req: Request, res: Response) {
     const userId = parseInt(req.params.userId); 
     try {
